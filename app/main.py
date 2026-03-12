@@ -23,7 +23,6 @@ class CarWashStation:
             dirt_level = max(0, self.clean_power - car.clean_mark)
             if self.distance_from_city_center == 0.0:
                 return 0.0  # evita divisão por zero
-                return 0.0  # Evita divisão por zero
             price = (car.comfort_class * dirt_level * self.average_rating) / self.distance_from_city_center
             return round(price, 1)
 
@@ -41,6 +40,7 @@ class CarWashStation:
         total_income = 0.0
         for car in cars:
             if car.clean_mark < self.clean_power:
+                calculated_price = self.calculate_washing_price(car)
                 self.wash_single_car(car)
                 total_income += self.calculate_washing_price(car)
 
@@ -52,5 +52,3 @@ class CarWashStation:
                 total_score += new_rating
                 self.count_of_ratings += 1
                 self.average_rating = round(total_score / self.count_of_ratings, 1)
-                self.average_rating = round(total_score / self.count_of_ratings, 1)
-
