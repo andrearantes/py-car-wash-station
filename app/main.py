@@ -1,5 +1,5 @@
 class Car:
-    def _init_(self, clean_mark: int, brand: str, comfort_class: str) -> None:
+    def __init__(self, clean_mark: int, brand: str, comfort_class: float) -> None:
         """Representa um carro com classe de conforto, nível de limpeza e marca."""
         self.comfort_class = comfort_class
         self.clean_mark = clean_mark
@@ -7,7 +7,7 @@ class Car:
 
 
 class CarWashStation:
-    def _init_(self, distance_from_city_center: float, clean_power: int, average_rating: float, count_of_ratings: int) -> None:
+    def __init__(self, distance_from_city_center: float, clean_power: int, average_rating: float, count_of_ratings: int) -> None:
         """Representa uma estação de lavagem de carros com seus atributos principais"""
         self.distance_from_city_center = distance_from_city_center
         self.clean_power = clean_power
@@ -15,7 +15,7 @@ class CarWashStation:
         self.count_of_ratings = count_of_ratings
 
 
-        def calculate_washing_price(self, car: Car) -> float:
+    def calculate_washing_price(self, car: Car) -> float:
             """Calcula o custo da lavagem de um carro com base na sujeira, conforto e outros fatores.
             Calcula o custo da lavagem de um carro, garantindo que o preço
             não seja negativo."""
@@ -40,7 +40,12 @@ class CarWashStation:
          retorna o valor total faturado."""
         total_income = 0.0
         for car in cars:
-            def rate_service(self, new_rating: float) -> None:
+            if car.clean_mark < self.clean_power:
+                self.wash_single_car(car)
+                total_income += self.calculate_washing_price(car)
+
+
+    def rate_service(self, new_rating: float) -> None:
                 """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de avaliações
                  da estação com uma nova nota."""
                 total_score = self.average_rating * self.count_of_ratings
