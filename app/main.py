@@ -32,10 +32,9 @@ class CarWashStation:
 
 
     def serve_cars(self, cars: list[Car]) -> float:
-        """Itera por uma lista de carros, lava os que precisam."""
+        """Lava apenas os carros que precisam e retorna a renda total arredondada."""
         total_income = 0.0
         for car in cars:
-            # CORREÇÃO: Só lava se o carro estiver mais sujo que a capacidade da estação
             if car.clean_mark < self.clean_power:
                 price = self.calculate_washing_price(car)
                 self.wash_single_car(car)
