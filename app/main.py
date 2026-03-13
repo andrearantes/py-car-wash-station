@@ -38,11 +38,12 @@ class CarWashStation:
         """Itera por uma lista de carros, lava os que estão abaixo da limpeza mínima e
          retorna o valor total faturado."""
         total_income = 0.0
+
         for car in cars:
             if car.clean_mark < self.clean_power:
-                calculated_price = self.calculate_washing_price(car)
+                price = self.calculate_washing_price(car)
                 self.wash_single_car(car)
-                total_income += self.calculate_washing_price(car)
+                total_income += price
 
 
     def rate_service(self, new_rating: float) -> None:
