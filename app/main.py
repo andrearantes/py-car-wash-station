@@ -20,8 +20,6 @@ class CarWashStation:
             Calcula o custo da lavagem de um carro, garantindo que o preço
             não seja negativo."""
             dirt_level = max(0, self.clean_power - car.clean_mark)
-            if self.distance_from_city_center == (1.0, 10.0):
-                return 0.0  # evita divisão por zero
             price = (car.comfort_class * dirt_level * self.average_rating) / self.distance_from_city_center
             return round(price, 1)
 
@@ -46,9 +44,9 @@ class CarWashStation:
 
 
     def rate_service(self, new_rating: int) -> None:
-                """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de
-                 avaliações da estação com uma nova nota."""
-                total_score = self.average_rating * self.count_of_ratings
-                total_score += new_rating
-                self.count_of_ratings += 1
-                self.average_rating = round(total_score / self.count_of_ratings, 1)
+        """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de
+           avaliações da estação com uma nova nota."""
+        total_score = self.average_rating * self.count_of_ratings
+        total_score += new_rating
+        self.count_of_ratings += 1
+        self.average_rating = round(total_score / self.count_of_ratings, 1)
