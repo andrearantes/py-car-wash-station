@@ -26,16 +26,16 @@ class CarWashStation:
 
     def wash_single_car(self, car: Car) -> None:
         """Simula a lavagem do carro ajustando seu clean_mark ao clean_power da estação.
-         Atualiza o clean_mark do carro se ele estiver mais sujo queo clean_power da estação."""
+         Atualiza se o carro se ele estiver mais sujo (clean_mark < clean_power)"""
         if car.clean_mark < self.clean_power:
             car.clean_mark = self.clean_power
 
 
     def serve_cars(self, cars: list[Car]) -> float:
-        """Itera por uma lista de carros, lava os que estão abaixo da limpeza mínima e
-        retorna o valor total faturado."""
+        """Itera por uma lista de carros, lava os que precisam."""
         total_income = 0.0
         for car in cars:
+            # CORREÇÃO: Só lava se o carro estiver mais sujo que a capacidade da estação
             if car.clean_mark < self.clean_power:
                 price = self.calculate_washing_price(car)
                 self.wash_single_car(car)
