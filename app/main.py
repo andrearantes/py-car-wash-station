@@ -1,5 +1,5 @@
 class Car:
-    def __init__(self, comfort_class: float, clean_mark: int, brand: str) -> None:
+    def __init__(self, comfort_class: int, clean_mark: int, brand: str) -> None:
         """Representa um carro com classe de conforto, nível de limpeza e marca."""
         self.comfort_class = comfort_class
         self.clean_mark = clean_mark
@@ -19,9 +19,8 @@ class CarWashStation:
             """Calcula o custo da lavagem de um carro com base na sujeira, conforto e outros fatores.
             Calcula o custo da lavagem de um carro, garantindo que o preço
             não seja negativo."""
-            dirt_level = self.clean_power - car.clean_mark
             dirt_level = max(0, self.clean_power - car.clean_mark)
-            if self.distance_from_city_center == 0.0:
+            if self.distance_from_city_center == (1.0, 10.0):
                 return 0.0  # evita divisão por zero
             price = (car.comfort_class * dirt_level * self.average_rating) / self.distance_from_city_center
             return round(price, 1)
@@ -46,9 +45,9 @@ class CarWashStation:
         return round(total_income, 1)
 
 
-    def rate_service(self, new_rating: float) -> None:
-                """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de avaliações
-                 da estação com uma nova nota."""
+    def rate_service(self, new_rating: int) -> None:
+                """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de
+                 avaliações da estação com uma nova nota."""
                 total_score = self.average_rating * self.count_of_ratings
                 total_score += new_rating
                 self.count_of_ratings += 1
