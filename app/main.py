@@ -1,5 +1,5 @@
 class Car:
-    def __init__(self, clean_mark: int, brand: str, comfort_class: float) -> None:
+    def __init__(self, comfort_class: float, clean_mark: int, brand: str) -> None:
         """Representa um carro com classe de conforto, nível de limpeza e marca."""
         self.comfort_class = comfort_class
         self.clean_mark = clean_mark
@@ -36,9 +36,8 @@ class CarWashStation:
 
     def serve_cars(self, cars: list[Car]) -> float:
         """Itera por uma lista de carros, lava os que estão abaixo da limpeza mínima e
-         retorna o valor total faturado."""
+        retorna o valor total faturado."""
         total_income = 0.0
-
         for car in cars:
             if car.clean_mark < self.clean_power:
                 price = self.calculate_washing_price(car)
