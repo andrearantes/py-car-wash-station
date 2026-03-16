@@ -8,7 +8,7 @@ class Car:
 
 class CarWashStation:
     def __init__(self, distance_from_city_center: float, clean_power: int, average_rating: float, count_of_ratings: int) -> None:
-        """Representa uma estação de lavagem de carros com seus atributos principais"""
+        """Representa uma estação de lavagem de carros com seus atributos principais."""
         self.distance_from_city_center = distance_from_city_center
         self.clean_power = clean_power
         self.average_rating = average_rating
@@ -16,17 +16,14 @@ class CarWashStation:
 
 
     def calculate_washing_price(self, car: Car) -> float:
-            """Calcula o custo da lavagem de um carro com base na sujeira, conforto e outros fatores.
-            Calcula o custo da lavagem de um carro, garantindo que o preço
-            não seja negativo."""
+            """Calcula o custo da lavagem de um carro."""
             dirt_level = max(0, self.clean_power - car.clean_mark)
             price = (car.comfort_class * dirt_level * self.average_rating) / self.distance_from_city_center
             return round(price, 1)
 
 
     def wash_single_car(self, car: Car) -> None:
-        """Simula a lavagem do carro ajustando seu clean_mark ao clean_power da estação.
-         Atualiza se o carro se ele estiver mais sujo (clean_mark < clean_power)"""
+        """Ajusta o clean_mark do carro ao clean_power da estação, se necessário."""
         if car.clean_mark < self.clean_power:
             car.clean_mark = self.clean_power
 
@@ -43,10 +40,8 @@ class CarWashStation:
 
 
     def rate_service(self, new_rating: int) -> None:
-        """Atualiza a média de avaliações com uma nova nota dada. Atualiza a média de
-           avaliações da estação com uma nova nota."""
+        """Atualiza average_rating e count_of_ratings com uma nova nota."""
         total_score = self.average_rating * self.count_of_ratings
         total_score += new_rating
         self.count_of_ratings += 1
         self.average_rating = round(total_score / self.count_of_ratings, 1)
-
